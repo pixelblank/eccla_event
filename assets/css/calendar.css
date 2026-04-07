@@ -1,0 +1,295 @@
+/**
+ * ECCLA Agenda - Verdant Shore Design System
+ * High-End Editorial Neumorphism
+ */
+
+:root {
+    --event-surface: #f6faf6;
+    --event-surface-low: #f1f5f1;
+    --event-primary: #3e6a00;
+    --event-primary-container: #8bc34a;
+    --event-on-surface: #181d1a;
+    --event-outline-variant: #c2c9b4;
+    
+    --neu-flat: 8px 8px 20px #dfe3e0, -8px -8px 20px #ffffff;
+    --neu-inset: inset 6px 6px 12px #dfe3e0, inset -6px -6px 12px #ffffff;
+    --neu-button: 4px 4px 10px #dfe3e0, -4px -4px 10px #ffffff;
+    --neu-button-active: inset 4px 4px 10px #dfe3e0, inset -4px -4px 10px #ffffff;
+}
+
+/* Base Fonts */
+#eccla-calendar-wrapper, .eccla-upcoming-list {
+    font-family: 'Inter', sans-serif;
+    color: var(--event-on-surface);
+    background-color: var(--event-surface);
+}
+
+#eccla-calendar-wrapper h2, .eccla-event-item h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Neumorphic Containers */
+#eccla-calendar-wrapper {
+    background: var(--event-surface);
+    padding: 40px;
+    border-radius: 2rem;
+    box-shadow: var(--neu-flat);
+    margin-bottom: 50px;
+}
+
+/* FullCalendar Customization */
+.fc {
+    --fc-border-color: transparent;
+    --fc-button-bg-color: var(--event-surface);
+    --fc-button-border-color: transparent;
+    --fc-button-hover-bg-color: var(--event-surface-low);
+    --fc-button-active-bg-color: var(--event-surface-low);
+    --fc-page-bg-color: transparent;
+}
+
+/* Header & Title */
+.fc .fc-toolbar-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--event-on-surface);
+}
+
+/* Navigation Buttons */
+.fc .fc-button {
+    background: var(--event-surface) !important;
+    box-shadow: var(--neu-button) !important;
+    border-radius: 0.8rem !important;
+    border: none !important;
+    color: var(--event-primary) !important;
+    padding: 10px 15px !important;
+    transition: all 0.2s ease !important;
+}
+
+.fc .fc-button:active {
+    box-shadow: var(--neu-button-active) !important;
+    transform: scale(0.98);
+}
+
+.fc .fc-button-primary:not(:disabled):active, 
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: var(--event-surface-low) !important;
+    color: var(--event-primary) !important;
+}
+
+/* Grid & Cells */
+.fc-theme-standard td, .fc-theme-standard th {
+    border: none !important;
+}
+
+.fc-col-header-cell {
+    padding-bottom: 20px !important;
+}
+
+.fc-col-header-cell-cushion {
+    font-size: 0.7rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.15em !important;
+    color: #a8a29e !important;
+    text-transform: uppercase;
+}
+
+.fc-daygrid-day-frame {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; 
+    align-items: center !important;    /* Force le centrage horizontal global */
+    height: 100% !important;
+    min-height: 80px !important;
+    padding: 0 !important; /* On enlève le padding qui pourrait décentrer */
+}
+
+.fc-daygrid-day-number {
+    font-weight: 700;
+    padding: 0 !important;
+    color: var(--event-on-surface);
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+}
+
+.fc-daygrid-day-top {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.fc-daygrid-day-bottom {
+    display: none !important;
+}
+
+/* 1. Style des barres (segments) */
+.fc-h-event, 
+.fc-daygrid-block-event,
+.fc-daygrid-dot-event {
+    background: var(--event-surface); 
+    box-shadow: none !important; /* Retrait de l'ombre */
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 2px 8px !important;
+    margin: 2px 0 !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center;
+}
+
+/* 2. Cacher le point par défaut */
+.fc-daygrid-event-dot {
+    display: none !important;
+}
+
+/* 3. Texte à l'intérieur de la barre */
+.fc-event-title {
+    display: block !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: var(--event-primary); /* !important retiré ici */
+    text-transform: uppercase;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    padding: 0 5px !important;
+    width: 100%;
+    text-align: center;
+}
+
+.fc-event-time {
+    display: none !important;
+}
+
+.fc-daygrid-event:active {
+    box-shadow: var(--neu-button-active) !important;
+    transform: scale(0.98);
+}
+
+/* 4. Alignement du conteneur de jours */
+.fc-daygrid-day-events {
+    padding: 4px 0 !important;
+    width: 100%;
+}
+
+/* Highlighted days with events */
+.has-event {
+    background: var(--event-surface-low) !important;
+    box-shadow: var(--neu-inset) !important;
+}
+.eccla-upcoming-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 30px;
+}
+
+.eccla-event-item {
+    background: var(--event-surface);
+    box-shadow: var(--neu-flat);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: none;
+    margin-bottom: 0;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.eccla-event-item:hover {
+    transform: translateY(-5px);
+}
+
+.event-date-label {
+    background: rgba(139, 195, 74, 0.15);
+    color: var(--event-primary);
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.eccla-event-item h4 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.eccla-event-item h4 a {
+    color: var(--event-on-surface);
+    text-decoration: none;
+}
+
+.event-details-btn {
+    background: var(--event-surface);
+    box-shadow: var(--neu-button);
+    color: var(--event-primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 8px 20px;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    margin-top: auto;
+    transition: all 0.2s ease;
+}
+
+.event-details-btn:active {
+    box-shadow: var(--neu-button-active);
+}
+
+/* Modal Styling */
+#eccla-event-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 100000000;
+    align-items: center;
+    justify-content: center;
+}
+
+#eccla-event-modal .modal-content {
+    background: var(--event-surface);
+    width: 80%;
+    max-width: 1200px;
+    padding: 50px;
+    border-radius: 2rem;
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+#close-eccla-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 35px;
+    cursor: pointer;
+    color: #777;
+    line-height: 1;
+}
+
+#modal-event-date {
+    background: rgba(139, 195, 74, 0.15);
+    color: var(--event-primary);
+    padding: 8px 16px;
+    border-radius: 9999px;
+}
+
+#modal-pdf-link {
+    background: linear-gradient(135deg, #3e6a00 0%, #8bc34a 100%);
+    box-shadow: 0 10px 20px rgba(62, 106, 0, 0.3);
+    padding: 12px 30px;
+}
